@@ -59,6 +59,8 @@ This directory contains constant values used across the application.
 
 #### /lib
 This directory contains utility functions and libraries used in the application.
+- **/api**: Contains all the controller's endpoints and their corresponding react query call for API abstraction following **service layer pattern**. Each controller has two files, one `endpoint.ts` for all the endpoints and their calling function and another is a `use*.ts` which takes help of endpoint.ts to wrap the api calls with `useQuery` and `useMutation`
+
 
 #### /providers
 This directory contains context providers for managing application-wide state.
