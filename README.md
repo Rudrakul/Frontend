@@ -1,36 +1,133 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Rudrakul - Frontend💻🔱
 
-## Getting Started
+The frontend of our webapp is Fueled using the latest cutting edge NextJs-14 framework!
 
-First, run the development server:
+We have explained about the tech stack and github workflow in each sections so please take your time and understand them.😊
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Technologies Used
+**Next.js 14:** For a dynamic and responsive frontend.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+**QuillJS:** Integrating a rich text editor.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+**React Query:** Effecient api call, fetching and server side  state management.
 
-## Learn More
+**Tailwind CSS:** Crafting a visually appealing and responsive UI.
 
-To learn more about Next.js, take a look at the following resources:
+**ShadCN:** Component library
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**BiomeJS:** Linting, code syle enforcement 
+## Project Structure
+Here's how the project is Structured
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+#### /src
+This is the root directory for the source code.
 
-## Deploy on Vercel
+#### /app
+This directory contains the main application pages and related components.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **/(auth)**: Contains authentication-related pages.
+  - **/login**: Contains components and logic for the login page.
+  - **/register**: Contains components and logic for the registration page.
+  - **/reset-password**: Contains components and logic for the reset password page.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- **/verify-email**: Contains components and logic for email verification.
+
+- **/about**: Contains the "About" page components and logic.
+
+- **/blogs**: Contains components and logic for blog-related pages.
+
+- **/contact**: Contains the "Contact" page components and logic.
+
+- **/experiences**: Contains components and logic for experience-related pages.
+
+- **/processes**: Contains components and logic for process-related pages.
+
+- **favicon.ico**: The favicon for the application.
+
+- **globals.css**: Global CSS styles for the application.
+
+- **layout.tsx**: The main layout component for the application.
+
+- **page.tsx**: The main entry point for the application pages.
+
+#### /components
+This directory contains reusable components used throughout the application. This is where we'll be creating the components in a folder with their respective modular css files if required.
+
+#### /constants
+This directory contains constant values used across the application.
+
+#### /lib
+This directory contains utility functions and libraries used in the application.
+
+#### /providers
+This directory contains context providers for managing application-wide state.
+
+- **TanstackProvider.tsx**: A context provider using TanStack (React Query) for managing server state and caching.
+
+#### /theme
+This directory contains theme-related files, such as font definitions and other styling configurations.
+
+- **font.ts**: Contains font definitions and configurations for the application.
+
+#### /types
+This directory contains TypeScript type definitions for the api calls across different controllers.
+The DTO's are the data transfer objects that you'll be recieving as response. 
+
+- **auth.ts**: Type definitions related to authentication.
+- **blog.ts**: Type definitions related to blogs.
+- **experience.ts**: Type definitions related to experiences.
+- **process.ts**: Type definitions related to processes.
+- **user.ts**: Type definitions related to users.
+
+#### .env.prod
+Environment variables for the production environment.
+
+#### .env.stage
+Environment variables for the staging environment.
+
+#### .gitignore
+Specifies files and directories to be ignored by Git.
+
+#### biome.json
+Configuration file for the Biome.
+
+### Additional Information
+
+- **React Query**: Used for data fetching and caching.
+- **Axios**: Used for making HTTP requests.
+- **TypeScript**: Used for type safety and better developer experience.## Git branches flow
+**Main Branch:**
+- Contains production-ready code.
+- Only updated from release and hotfix branches.
+
+**Develop Branch:**
+- The main branch for development.
+- Features are developed in separate feature branches and merged back into develop when completed.
+
+**Feature Branches:**
+- Created from develop for individual features.
+- Merged back into develop after the feature is completed and tested.
+
+**Release Branch:**
+- Created from develop when preparing for a new release.
+- Used for final testing and bug fixing before going live.
+- Merged into main and develop after the release is finalized.
+
+**Hotfix Branch:**
+- Created from main when an urgent fix is needed in production.
+- Merged into main, release, and develop after the fix is applied.
+
+### Tips:
+**Feature Branch Naming:**
+Use a consistent naming convention like feature/feature-name to keep branches organized.
+
+**Commit Messages:**
+Use descriptive commit messages to make it clear what each commit does. This helps when reviewing history.
+## Installation
+
+To get started with the project, follow these steps:
+- Clone the repository.
+- Install dependencies using `npm install` or `yarn install`.
+- Set up environment variables by creating `.env` files based on `.env.prod` and `.env.stage`.
+- Run the development server using `npm run dev` or `yarn dev`.
