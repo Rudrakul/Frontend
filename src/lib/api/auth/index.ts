@@ -1,5 +1,5 @@
 import { useQuery, useMutation, useQueryClient } from 'react-query';
-import { login, logout, register, requestOtp, verifyOtp, resetPassword } from './endpoints';
+import { login, logout, register, requestOtp, verifyOtp, resetPassword, getVerifyEmailOtp, verifyEmailOtp } from './endpoints';
 import type { AuthRequest, OtpRequest } from '@/types/auth';
 
 // Queries
@@ -50,3 +50,21 @@ export const useResetPassword = (requestBody: AuthRequest) => {
         },
     });
 };
+
+export const useGetVerifyEmailOtp = (email: string) => {
+
+    return useMutation((email: string) => getVerifyEmailOtp(email), {
+        onSuccess: () => {
+            queryClient.invalidateQueries(['auth', 'user'])
+        }
+    })
+}
+
+export const useVerifyEmailOtp = (data: OtpRequest) => {
+
+    return useMutation((data: OtpRequest) => verifyEmailOtp(data), {
+        onSuccess: () => {
+            queryClient.invalidateQueries(['auth', 'user'])
+        }
+    })
+}

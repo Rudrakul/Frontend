@@ -25,6 +25,16 @@ export const resetPassword = async (req: AuthRequest) => {
     return response.data;
 }
 
+export const getVerifyEmailOtp = async (email: string) => {
+    const response = await axiosInstance.post(`/api/v1/auth/verify-email/send-otp/${email}`);
+    return response.data;
+}
+
+export const verifyEmailOtp = async (data: OtpRequest) => {
+    const response = await axiosInstance.post("/api/v1/auth/verify-email/verify-otp", data);
+    return response.data;
+}
+
 
 
 //? GET REQUESTS ==============================================================================
