@@ -30,3 +30,8 @@ export interface UserUpdateDTO {
     userImage?: string;
     about?: string;
 }
+
+export interface getUsersDTO {
+    foundUsers: User[],
+    notFoundUsers: string[]
+}
