@@ -1,6 +1,6 @@
-import { useQuery, useMutation, useQueryClient } from 'react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { login, logout, register, requestOtp, verifyOtp, resetPassword, getVerifyEmailOtp, verifyEmailOtp } from './endpoints';
-import type { AuthRequest, OtpRequest } from '@/types/auth';
+import type { AuthRequest, LoginResponse, OtpRequest } from '@/types/auth';
 
 // Queries
 export const useLogout = () => {
@@ -13,11 +13,12 @@ export const useRequestOtp = (email: string) => {
 
 
 // Mutations
-const queryClient = useQueryClient();
 
-export const useLogin = (requestBody: AuthRequest) => {
 
-    return useMutation((requestBody: AuthRequest) => login(requestBody), {
+export const useLogin = () => {
+    const queryClient = useQueryClient();
+
+    return useMutation<LoginResponse, Error, AuthRequest>((req: AuthRequest) => login(req), {
         onSuccess: () => {
             queryClient.invalidateQueries(['auth', 'user']);
         },
@@ -25,6 +26,7 @@ export const useLogin = (requestBody: AuthRequest) => {
 };
 
 export const useRegister = (requestBody: AuthRequest) => {
+    const queryClient = useQueryClient();
 
     return useMutation((requestBody: AuthRequest) => register(requestBody), {
         onSuccess: () => {
@@ -35,6 +37,7 @@ export const useRegister = (requestBody: AuthRequest) => {
 
 export const useVerifyOtp = (requestBody: OtpRequest) => {
 
+    const queryClient = useQueryClient();
     return useMutation((requestBody: OtpRequest) => verifyOtp(requestBody), {
         onSuccess: () => {
             queryClient.invalidateQueries(['auth', 'user']);
@@ -44,6 +47,7 @@ export const useVerifyOtp = (requestBody: OtpRequest) => {
 
 export const useResetPassword = (requestBody: AuthRequest) => {
 
+    const queryClient = useQueryClient();
     return useMutation((requestBody: AuthRequest) => resetPassword(requestBody), {
         onSuccess: () => {
             queryClient.invalidateQueries(['auth', 'user']);
@@ -53,6 +57,7 @@ export const useResetPassword = (requestBody: AuthRequest) => {
 
 export const useGetVerifyEmailOtp = (email: string) => {
 
+    const queryClient = useQueryClient();
     return useMutation((email: string) => getVerifyEmailOtp(email), {
         onSuccess: () => {
             queryClient.invalidateQueries(['auth', 'user'])
@@ -62,6 +67,7 @@ export const useGetVerifyEmailOtp = (email: string) => {
 
 export const useVerifyEmailOtp = (data: OtpRequest) => {
 
+    const queryClient = useQueryClient();
     return useMutation((data: OtpRequest) => verifyEmailOtp(data), {
         onSuccess: () => {
             queryClient.invalidateQueries(['auth', 'user'])
